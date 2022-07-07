@@ -1,8 +1,14 @@
 <template>
+<!--
+  1 - Header не самозакрывающийся в отличии от остальных компонентов. Нарушает единообразие
+  2 - Корзина хранится в data, а лучше сделать через store state, чтобы избежать случайного
+    изменения данных.
+  3 - Я бы хранил значение валюты на сервере, чтобы значение соответствовало ценам каталога
+-->
   <div id="app">
-    <Header :cart="cart" :currency="currency"></Header>
-    <List :currency="currency"/>
-    <Cart :cart="cart"/>
+    <Header />
+    <List />
+    <Cart />
   </div>
 </template>
 
@@ -13,17 +19,12 @@ import Cart from './components/Cart.vue';
 
 export default {
   name: 'App',
-  data() {
-    return {
-      cart: [],
-      currency: 'VGTB',
-    };
-  },
   components: {
     Header,
     List,
     Cart,
   },
+  
 }
 </script>
 
